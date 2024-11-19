@@ -1,40 +1,38 @@
-name: CI
+name: Deploy Next.js to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main # Deploy when pushing to 'main' branch
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
-    services:
-      docker:
-        image: docker:20.10.7
-        options: --privileged
-        ports:
-          - 3000:3000
-        volumes:
-          - /var/run/docker.sock:/var/run/docker.sock
-
     steps:
-      - name: Checkout repository
+      # 1. Check out the code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
+      # 2. Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Use the Node.js version compatible with your project
+          node-version: 18
+          cache: "yarn"
 
-      - name: Install Yarn
-        run: npm install --global yarn
-
-      - name: Install dependencies
+      # 3. Install Dependencies
+      - name: Install Dependencies
         run: yarn install
 
-      - name: Build project
-        run: yarn build
+      # 4. Build the Next.js Project
+      - name: Build Next.js Project
+        run: yarn build && yarn export
 
-      - name: Start project
-        run: yarn start
+      # 5. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
