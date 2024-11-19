@@ -273,4 +273,4 @@ export const WORK_CONTENTS = {
   ],
 };
 
-export const GTAG = "G-5HCTL2TJ5W";
+export const GTAG = "";
