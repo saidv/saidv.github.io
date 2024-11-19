@@ -3,30 +3,30 @@ name: Deploy Next.js to GitHub Pages
 on:
   push:
     branches:
-      - main # Deploy when pushing to 'main' branch
+      - main # Deploy when changes are pushed to the 'main' branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Check out the code
-      - name: Checkout Code
+      # 1. Check out the repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       # 2. Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18 # Use Node.js version 18
           cache: "yarn"
 
-      # 3. Install Dependencies
-      - name: Install Dependencies
+      # 3. Install dependencies
+      - name: Install dependencies
         run: yarn install
 
-      # 4. Build the Next.js Project
-      - name: Build Next.js Project
+      # 4. Build the Next.js project
+      - name: Build Next.js
         run: yarn build && yarn export
 
       # 5. Deploy to GitHub Pages
@@ -35,4 +35,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
-          publish_branch: gh-pages

@@ -1,8 +1,5 @@
-module.exports = {
-  output: "export",
-};
-
 const nextConfig = {
+  output: "export",
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp3|wav)$/i,
