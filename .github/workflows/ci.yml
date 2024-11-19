@@ -27,7 +27,7 @@ jobs:
 
       # 4. Build the Next.js project
       - name: Build Next.js
-        run: yarn build && yarn export
+        run: yarn build
 
       # 5. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
