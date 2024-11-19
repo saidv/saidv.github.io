@@ -35,3 +35,9 @@ jobs:
 
       - name: Build project
         run: yarn build
+
+      - name: Build Docker image
+        run: docker-compose build
+
+      - name: Run Docker Compose
+        run: docker-compose up -d
