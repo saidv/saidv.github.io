@@ -35,7 +35,7 @@ const Header = ({ children }) => {
           <Image src="/logo.svg" alt="Said Hourdane" width={25} height={25} />
         </a>
         <div className="outer-menu relative flex items-center gap-8 z-[1]">
-          <SoundBar />
+          {/* <SoundBar /> */}
           <input
             ref={inputRef}
             aria-labelledby="menu"
