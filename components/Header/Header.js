@@ -32,12 +32,7 @@ const Header = ({ children }) => {
     <nav className="w-full fixed top-0 py-8 z-50 select-none bg-gradient-to-b from-black shadow-black transition-all duration-300">
       <div className="flex justify-between section-container">
         <a href="#home" className="link">
-          <Image
-            src="/logo.svg"
-            alt="Logo - Shubh Porwal"
-            width={25}
-            height={25}
-          />
+          <Image src="/logo.svg" alt="Said Hourdane" width={25} height={25} />
         </a>
         <div className="outer-menu relative flex items-center gap-8 z-[1]">
           <SoundBar />
